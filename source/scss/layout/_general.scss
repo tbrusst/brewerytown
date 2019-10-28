@@ -1,0 +1,128 @@
+/*
+ * General Container Elements
+ *
+ * This file contains the site top-level and general wrapper elements.
+ *
+ *****************************************************************************/
+
+.texture {
+    background-image: url('../images/ui/texture.png');
+}
+
+
+.content-block {
+
+    .two-col {
+        display: flex;
+        flex-direction: column;
+        margin: $spacing*2 0;
+
+        @include grid-media($grid-small) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        > div {
+            width: calc(50% - #{$spacing});
+        }
+    }
+}
+
+[v-cloak] {
+    display: none;
+}
+
+/* ###
+#
+# VUE TRANSITIONS
+#
+### */
+
+// Image Slider
+.slide-change-enter-active {
+    transition: all .6s ease;
+}
+.slide-change-leave-active {
+    transition: all .3s ease;
+}
+.slide-change-enter {
+    transform: translateX(-$spacing);
+    opacity: 0 !important;
+}
+.slide-change-leave-to {
+    transform: translateX($spacing);
+    opacity: 0 !important;
+}
+
+
+// fade
+.fade-enter-active {
+    transform-origin: left 10%;
+    opacity: 1;
+    transition: all $dur $ease;
+}
+
+.fade-leave-active {
+    opacity: 1;
+    transition: all $dur $ease;
+}
+.fade-enter {
+    transform: rotate(5deg) translateY($spacing);
+    opacity: 0 !important;
+}
+.fade-leave-to {
+    transform: rotate(-2.5deg) translateY(-$spacing);
+    opacity: 0 !important;
+}
+
+
+// Text Slider
+.text-change-enter-active {
+    transition: all $dur*2 $dur ease;
+}
+.text-change-leave-active {
+    transition: all $dur $dur/2 ease;
+}
+.text-change-enter {
+    transform: translateY($spacing);
+    opacity: 0 !important;
+}
+.text-change-leave-to {
+    transform: translateY(-$spacing);
+    opacity: 0 !important;
+}
+
+
+// Brewerytown Slider
+.slide-brew-enter-active, .slide-brew-leave-active {
+    position: relative;
+    transition: all $dur $dur $ease;
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%; height: 100%;
+        background-color: $brand-gold;
+        transition: transform .6s ease;
+        transform-origin: 0 0;
+        transform: scale(0, 1);
+    }
+}
+.slide-brew-leave-active {
+    transition: all $dur $dur $ease;
+
+    &:before {
+        transform-origin: 100% 0;
+    }
+}
+
+.slide-brew-enter {
+    &:before {
+        transform: scale(1, 1);
+    }
+}
+.slide-brew-leave-to {
+    &:before {
+        transform: scale(1, 1);
+    }
+}

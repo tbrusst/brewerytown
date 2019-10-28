@@ -1,0 +1,58 @@
+.story {
+
+    &-row {
+        display: flex;
+        flex-direction: column;
+        margin-top: 6rem;
+
+        @include grid-media($grid-small) {
+            flex-direction: row;
+        }
+
+        &:last-child {
+            @include grid-media($grid-small) {
+                flex-direction: row-reverse;
+            }
+        }
+    }
+    &-img {
+        width: 100%;
+        margin-bottom: $spacing;
+
+        @include grid-media($grid-small) {
+            width: 50%;
+        }
+    }
+    &-entry {
+        padding: 0 $spacing;
+
+        @include grid-media($grid-small) {
+            width: 50%;
+        }
+
+        h5 {
+            padding: $spacing 0; 
+        }
+        &-logo {
+            display: block;
+            width: 165px;
+            margin: $spacing 0;
+        }
+    }
+}
+
+#story-img-app {
+    position: relative;
+    display: none;
+
+    @include grid-media($grid-small) {
+        display: block;
+    }
+    
+    img {
+        position: absolute;
+        width: calc(100% - #{$spacing});
+        min-height: 500px;
+        object-fit: cover;
+    }
+}

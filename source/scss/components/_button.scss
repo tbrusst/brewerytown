@@ -1,0 +1,96 @@
+/*
+ * Buttons
+ *
+ * This file contains all styles related to the button component.
+ *
+ *****************************************************************************/
+
+
+ .btn {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+
+    &:hover:after {
+        transform: scale(1, 1);
+    }
+
+    &:before {
+        content: '→';
+        position: relative;
+        padding: 0 $spacing/2;
+        z-index: 10;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        width: 100%; height: 100%;
+        top: 0; left: 0;
+        transform-origin: 0 0;
+        transform: scale(0, 1);
+        transition: all 300ms $ease;
+    }
+
+    a {
+        position: relative;
+        display: inline-block;
+        padding: 10px $spacing/2 8px 0;
+        color: inherit;
+        @include responsive-font-size(type-scale(size-2));
+        font-family: $font-body;
+        text-transform: uppercase;
+        z-index: 10;
+    }
+    &.btn-gold {
+        background-color: $brand-gold;
+        border: 1px solid $brand-gold;
+        color: $white;
+
+        &:hover {
+            color: $brand-gold;
+        }
+
+        &:after {
+            background-color: $brand-charcoal;
+        }
+    }
+    &.btn-white {
+        background-color: $light-gray;
+        border: 1px solid $light-gray;
+        color: $brand-charcoal;
+
+        &:hover {
+            color: $light-gray;
+        }
+
+        &:after {
+            background-color: $brand-charcoal;
+        }
+    }
+    &.btn-dark {
+        background-color: $brand-charcoal;
+        border: 1px solid $brand-charcoal;
+        color: $brand-eggshell;
+
+        &:hover {
+            color: $brand-charcoal;
+        }
+
+        &:after {
+            background-color: $white;
+        }
+    }
+    &.btn-none {
+        padding: 0 0 $spacing/2 0;
+
+        @include on-event {
+            color: darken($white, 33%);
+        }
+
+        &:before {
+            padding: 0;
+        }
+    }
+}
+

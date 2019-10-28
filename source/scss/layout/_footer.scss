@@ -1,0 +1,99 @@
+/*
+ * Site Footer
+ *
+ * This file contains styles that are specific to the site footer.
+ *
+ *****************************************************************************/
+
+#contact {
+    position: relative;
+}
+
+.pre-footer {
+    position: relative;
+    height: 12rem;
+    overflow: hidden;
+
+    .parallax-layer {
+        position: absolute;
+        top: 0; bottom: 0; left: 0; right: 0;
+        height: 200%;
+    }
+    
+    &-bg {
+        height: 100%;
+        background-color: $brand-blue;
+        background-image: url('../images/ui/otto-pattern.svg');
+        background-size: 20vw;
+
+        @include grid-media($grid-medium) {
+            background-size: 10vw;
+        }
+    }
+}
+
+.footer {
+    background-color: $brand-charcoal;
+    color: $white;
+
+    .container {
+        .content-block {
+            @include grid-column(12, $grid);
+            @include grid-media($grid-small) {
+                @include grid-column(6);
+            }
+            @include grid-media($grid-large) {
+                @include grid-column(4);
+            }
+
+            &:first-child { // Address
+                margin-bottom: $spacing;
+
+                @include grid-media($grid-small) {
+                    @include grid-column(12);
+                }
+                @include grid-media($grid-large) {
+                    @include grid-column(4);
+                }
+
+                a {
+                    color: $white;
+                    transition: color $dur $ease;
+
+                    &:hover {
+                        color: darken($white, 30%);
+                    }
+                }
+                h6 {
+                    line-height: 2em;
+                }
+                img {
+                    max-width: 120px;
+                    margin-bottom: $spacing;
+                }
+            }
+            .footer-social {
+                margin: $spacing 0;
+                font-family: $font-btn;
+                a {
+                    @include responsive-font-size(type-scale(size-2));
+
+                    color: $white;
+                    letter-spacing: 0.15em;
+                    text-transform: uppercase;
+
+                    @include on-event {
+                        color: darken($white, 33%);
+                    }
+                }
+                h6 {
+                    display: inline;
+                    margin: 0 5px;
+                }
+            }
+            svg {
+                width: 140px;
+            }
+        }
+    }
+}

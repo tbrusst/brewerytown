@@ -1,0 +1,267 @@
+/*
+ * Site Header
+ *
+ * This file contains styles that are specific to the site header.
+ *
+ *****************************************************************************/
+
+ .site-header {
+     padding: $spacing/2 0;
+     background-color: $brand-gold;
+
+     h6 {
+         margin: 0;
+         text-align: center;
+         color: $white;
+     }
+ }
+
+ .hero {
+    background-color: $brand-charcoal;
+    color: $white;
+
+    nav {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%; height: 0;
+        top: 0;
+        background-color: $brand-charcoal;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.33);
+        transition: all 600ms $ease;
+        z-index: 9999;
+
+        @include grid-media($grid-medium) {
+            position: relative;
+            flex-direction: row;
+            height: unset;
+            padding: $spacing/2 0;
+            background-color: unset;
+        }
+        .nav-item {
+            padding: $spacing/4 $spacing/2;
+
+            @include grid-media($grid-large) {
+                padding: $spacing/4 $spacing;
+            }
+
+            &:last-child {
+                @include grid-media($grid-medium) {
+                    margin-right: $spacing/2;
+                }
+            }
+
+            &.nav-logo {
+                margin: 0 auto;
+                margin-right: auto;
+
+                @include grid-media($grid-medium) {
+                    position: relative;
+                    left: $spacing/2;
+                    margin-left: 0;
+                    padding-left: 0;
+                }
+
+                img {width: 120px;}
+            }
+            &.nav-solid {
+                position: fixed;
+                top: $spacing/2; right: $spacing/2;
+                transition: .4s all $ease;
+                background-color: $brand-gold;
+                border: 1px solid $brand-gold;
+                text-align: center;
+                z-index: 3000;
+
+                @include grid-media($grid-medium) {
+                    position: relative;
+                    display: inline-block;
+                    top: auto; right: auto;
+                    background-color: unset;
+                    box-shadow: inset 200px 0px $brand-gold;
+                }
+
+                &:hover{
+                    box-shadow: inset 0px 0px $brand-gold;
+                }
+
+            }
+            &.nav-hamburger {
+                position: fixed;
+                width: 100%;
+                top: 0;
+                padding: $spacing/2;
+                background-color: $brand-charcoal;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.33);
+                cursor: pointer;
+                z-index: 1000;
+
+                @include grid-media($grid-medium) {
+                    display: none;
+                }
+
+                .icon {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    width: 36px; height: 36px;
+                    z-index: 2000;
+
+                    .icon-bar {
+                        position: relative;
+                        width: 36px; height: 2px;
+                        background-color: $light-gray;
+                        border-radius: 1px;
+                        transition: all 300ms $ease;
+                        z-index: 3000;
+                    }
+                }
+            }
+            &:not(.nav-hamburger):not(.nav-solid) {
+                transform: translateY(-100vh);
+                transition: transform 300ms $ease;
+
+                @include grid-media($grid-medium) {
+                    transform: translateY(0vh);
+                }
+            }
+        }
+    }
+
+    &-content {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.open {
+    height: 100vh !important;
+    margin-top: 36px + $spacing;
+
+    @include grid-media($grid-medium) {
+        height: auto !important;
+        margin-top: 0;
+    }
+
+    .nav-item:not(.nav-hamburger):not(.nav-solid) {
+        transform: translateY(0vh) !important;
+    }
+    .nav-hamburger {
+        .icon {
+            &-bar {
+                transform-origin: 0 50%;
+
+                &:first-child {
+                    transform: rotate(45deg);
+                }
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+                &:last-child {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}
+
+.mobile-logo {
+    margin-top: 20px;
+    padding: $spacing*2 0;
+    text-align: center;
+
+    @include grid-media($grid-medium) {
+        display: none;
+    }
+
+    img {
+        width: 200px;
+    }
+}
+
+.link-item:not(.nav-solid) a{
+    transition: all .3s $ease;
+    //other styling in typography.scss
+    &:hover {
+        color: $brand-gold;
+    }
+}
+
+.nav-solid a {
+    color: white;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+
+    @include grid-media($grid-medium) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-slider, &-copy {
+        margin: $spacing/2;  
+        
+        @include grid-media($grid-medium) { 
+            width: 50%;
+            margin: $spacing*2 0;
+        }
+    }
+    &-slider {
+
+        &-cell {
+
+            img {
+                height: 400px;
+                object-fit: cover;
+                object-position: center center;
+
+                @include grid-media($grid-small) {
+                    width: 100%; height: 450px;
+                }
+                @include grid-media($grid-medium) {
+                    height: 550px;
+                }
+            }
+        }
+        &-ctrl {
+            display: flex;
+            justify-content: space-around;
+            
+            button {
+                padding: $spacing $spacing/2 0 $spacing/2;
+
+                &:hover {
+                    color: $brand-gold;
+                }
+            }
+        }
+    }
+    &-copy {
+        padding: $spacing;
+
+        @include grid-media($grid-large) { 
+            width: 50%;
+            padding: 0 $spacing;
+        }
+
+        h1 {
+            padding: $spacing 0;
+
+            @include grid-media($grid-large) {
+                //min-height: 420px;
+                padding: 0;
+            }
+        }
+    }
+}
+
+a[ id= "floorplan" ]:target ~ .page-content div.section {
+    -webkit-transform: translateY( 0px);
+    transform: translateY( 0px );
+}

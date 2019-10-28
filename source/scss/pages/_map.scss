@@ -1,0 +1,91 @@
+.map {
+    background-color: $light-gray;
+    
+    &-nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: $spacing*2;
+
+        @include grid-media($grid-medium) {
+            flex-direction: row;
+        }
+
+        &-menu {
+
+            a {
+                @include responsive-font-size(type-scale(size-2));
+                display: block;
+                padding: $spacing/3 $spacing/2;
+                border-top: 1px solid $text-color;
+                border-left: 1px solid $text-color;
+                border-right: 1px solid $text-color;
+                color: lighten($text-color, 50%);
+                font-family: $font-heading;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+
+                @include grid-media($grid-large) {
+                    display: inline-block;
+                    border-bottom: 1px solid $text-color;
+                    border-right: none;
+                }
+
+                &:last-child {
+                    border-bottom: 1px solid $text-color;
+
+                    @include grid-media($grid-large) {
+                        border-right: 1px solid $text-color;
+                    }
+                }
+
+                &.active {
+                    color: $text-color;
+                }
+            }
+        }
+    }
+    &-content {
+        display: flex;
+        flex-direction: column;
+        @include grid-media($grid-medium) {
+            flex-direction: row;
+        }
+
+        &-list {
+            height: 500px;
+            overflow: scroll;
+
+            @include grid-media($grid-medium) {
+                width: 33%;
+            }
+
+            ol {
+                padding: 0px;
+                list-style: none;
+
+                li {
+                    @include responsive-font-size(type-scale(size-1));
+                    padding: 0 0 $spacing/2 0;
+                    counter-increment: inst;
+                    letter-spacing: 0.02em;
+                    list-style-position: outside;
+                    transition: all 300ms $ease;
+
+                    &:before {
+                        @include responsive-font-size(type-scale(size-3));
+
+                        content: counter(inst) '.';
+                        padding-right: 6px;
+                    }
+                    &.hide {
+                        opacity: .2;
+                    }
+                }
+            }
+        }
+        #mapbox {
+            
+        }
+    }
+}
